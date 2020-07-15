@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {getSyllableCount, countOfSyllables} from './validation'
+import { countOfSyllables } from './validation'
 
 export class UserHaiku extends Component {
     state = { text: "Haiku goes here" };
@@ -18,20 +18,20 @@ export class UserHaiku extends Component {
 
     validateHaiku = () => {
         let haikuCandidate = this.state.text;
-        let haikuPieces = [];
         let haikuLines = haikuCandidate.split('\n');
-        // for (let i = 0; i < haikuLines.length; i++){
-        //     let haikuWords = haikuLines[i].split(' ');
-        //     haikuPieces.push(haikuWords);
-        // }
-        // console.log(haikuPieces); 
 
         countOfSyllables(haikuLines).then( async (results) => {
-            console.log(results)
+            console.log(`This is a valid haiku ${results}`)
+            //
         });
         
 
     }
+
+    //FUNCTION that is called upon state.valid = true. This will post request the server to add the haiku
+
+    //FUNCTION called after the one above, will set state to equal the newly validated function
+
 
     render() {
         return (

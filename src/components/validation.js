@@ -1,9 +1,11 @@
 const axios = require('axios');
 
 
-export async function getSyllableCount (arr){
+async function getSyllableCount (arr){
     let totalCount = 0;
     let wordSyllableCount = 0;
+    let validHaiku = null;//val
+    let validHaikuHelper = 0;//val
     for (let x = 0; x < arr.length; x++) {
         let lineCount = 0;
         let lineText = '';
@@ -19,22 +21,46 @@ export async function getSyllableCount (arr){
             .then( (results) => {
                 lineCount+= results; 
                 totalCount+= results;
+
             })
             .catch((e) => console.error(e));
             
         };
         console.log(`Line ${x + 1} count is: ${lineCount}`); 
-        //line syllable count validation should go here
+
+        //line syllable count validation
+        switch(x) {
+            case 0:
+              // line 1
+              lineCount == 5 ? validHaikuHelper+= 1 : validHaikuHelper+= 0;
+              break;
+            case 1:
+              // line 2
+              lineCount == 7 ? validHaikuHelper+= 1 : validHaikuHelper+= 0;
+              break;
+            case 2:
+            // line 3
+            lineCount == 5 ? validHaikuHelper+= 1 : validHaikuHelper+= 0;
+              break;
+            default:
+              console.log(`This isn't valid.`)
+          }
+
     };
-    return(totalCount);
+    console.log(`Total syllable count: ${totalCount}`);
+    if (validHaikuHelper == 3) {
+        validHaiku = true;
+    } else { validHaiku = false};
+    
+    return(validHaiku);//this needs to return the validation bool
 }
 
 
 
 export async function countOfSyllables  (haiku) {
-    let syllableCount = 0;
-    syllableCount = await getSyllableCount(haiku);
-    console.log(`Total syllable count: ${syllableCount}`);
-    return syllableCount;
+    let valid = null;
+    valid = await getSyllableCount(haiku);
+    console.log(`This is a valid haiku: ${valid}`);
+    return valid;
 };
 
