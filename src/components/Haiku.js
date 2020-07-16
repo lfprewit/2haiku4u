@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './haiku.css';
+import UserHaiku from './UserHaiku';
 const axios = require('axios');
 
 
@@ -11,6 +12,12 @@ export class Haiku extends Component {
             userText: ""
         }
     }
+
+    myCallback = (dataFromChild) => {
+        this.setState({haiku: dataFromChild});
+    }
+
+
 
     componentDidMount() {
         axios.get('/api/haiku')
@@ -29,6 +36,8 @@ export class Haiku extends Component {
                 ))}
                      
                 <br></br>
+                
+                <UserHaiku callbackFromParent={this.myCallback}/>
 
             </div>
         )

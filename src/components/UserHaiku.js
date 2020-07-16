@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
 import { countOfSyllables } from './validation'
 import './haiku.css';
+import Haiku from './Haiku';
 
 export class UserHaiku extends Component {
-    state = { text: "Haiku goes here" };
+    constructor (props) {
+        super(props);
+        this.state = { text: "Haiku goes here" }
+    };
 
     //this sets the state equal to the entered text
     //needs a button that takes the state and splits it by \n and then " ", then calls function
     //function should changes state value for Validated, and if true should call the function that adds it to the DB
     
+
+
+
     handleChange = (e) => {
         this.setState({ text: e.target.value });
     };
@@ -26,7 +33,7 @@ export class UserHaiku extends Component {
         });
         countOfSyllables(haikuForValidation).then( async (results) => {
             console.log(`This is a valid haiku ${results}`)
-            //results === true ? something that changes haiku state : console.log('test: false');
+            results === true ? this.props.callbackFromParent(haikuLines) : console.log('test: false');
         });
         
         
@@ -52,4 +59,4 @@ export class UserHaiku extends Component {
 }
 
 
-export default UserHaiku
+export default UserHaiku;
