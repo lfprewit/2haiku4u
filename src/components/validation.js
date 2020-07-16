@@ -12,7 +12,6 @@ async function getSyllableCount (arr){
         lineText+= arr[x];
         let lineArray = lineText.split(" ");
         for (let i = 0; i < lineArray.length; i ++) {
-            
             await axios.get(`https://api.datamuse.com/words?sp=${lineArray[i]}&md=s`)
             .then ( async (results) => {
                 wordSyllableCount = results.data[0].numSyllables;
@@ -32,15 +31,15 @@ async function getSyllableCount (arr){
         switch(x) {
             case 0:
               // line 1
-              lineCount == 5 ? validHaikuHelper+= 1 : validHaikuHelper+= 0;
+              lineCount === 5 ? validHaikuHelper+= 1 : validHaikuHelper+= 0;
               break;
             case 1:
               // line 2
-              lineCount == 7 ? validHaikuHelper+= 1 : validHaikuHelper+= 0;
+              lineCount === 7 ? validHaikuHelper+= 1 : validHaikuHelper+= 0;
               break;
             case 2:
             // line 3
-            lineCount == 5 ? validHaikuHelper+= 1 : validHaikuHelper+= 0;
+            lineCount === 5 ? validHaikuHelper+= 1 : validHaikuHelper+= 0;
               break;
             default:
               console.log(`This isn't valid.`)
@@ -48,11 +47,8 @@ async function getSyllableCount (arr){
 
     };
     console.log(`Total syllable count: ${totalCount}`);
-    if (validHaikuHelper == 3) {
-        validHaiku = true;
-    } else { validHaiku = false};
-    
-    return(validHaiku);//this needs to return the validation bool
+    validHaikuHelper === 3 ? validHaiku = true : validHaiku = false;
+    return(validHaiku);//returns the validation bool
 }
 
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { countOfSyllables } from './validation'
+import './haiku.css';
 
 export class UserHaiku extends Component {
     state = { text: "Haiku goes here" };
@@ -19,12 +20,17 @@ export class UserHaiku extends Component {
     validateHaiku = () => {
         let haikuCandidate = this.state.text;
         let haikuLines = haikuCandidate.split('\n');
-
-        countOfSyllables(haikuLines).then( async (results) => {
+        let haikuForValidation = haikuLines.map ( (str) => {
+            var desired = str.replace(/[^\w\s]/gi, '');
+            return desired;
+        });
+        countOfSyllables(haikuForValidation).then( async (results) => {
             console.log(`This is a valid haiku ${results}`)
-            //
+            //results === true ? something that changes haiku state : console.log('test: false');
         });
         
+        
+
 
     }
 
@@ -36,9 +42,9 @@ export class UserHaiku extends Component {
     render() {
         return (
             <div>
-                <textarea rows={3} cols={50} value={this.state.text} onChange={this.handleChange} />
+                <textarea rows={3} cols={77} value={this.state.text} maxLength={200} onChange={this.handleChange} />
                 {/*<button onClick={this.printHaiku}>Print to Console</button>*/}
-                <br></br>
+                <br></br> 
                 <button onClick={this.validateHaiku}>Share</button>
             </div>
         );
