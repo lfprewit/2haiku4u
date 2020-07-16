@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { countOfSyllables } from './validation'
 import './haiku.css';
-import Haiku from './Haiku';
 
 export class UserHaiku extends Component {
     constructor (props) {
@@ -29,11 +28,14 @@ export class UserHaiku extends Component {
         let haikuLines = haikuCandidate.split('\n');
         let haikuForValidation = haikuLines.map ( (str) => {
             var desired = str.replace(/[^\w\s]/gi, '');
-            return desired;
-        });
+            return desired;});
+
         countOfSyllables(haikuForValidation).then( async (results) => {
-            console.log(`This is a valid haiku ${results}`)
-            results === true ? this.props.callbackFromParent(haikuLines) : console.log('test: false');
+            console.log(`This is a valid haiku ${results}`);
+            if (results === true) {
+                this.props.callbackFromParent(haikuLines);
+                this.setState({ text: "Haiku goes here" });
+            }
         });
         
         
@@ -43,20 +45,15 @@ export class UserHaiku extends Component {
 
     //FUNCTION that is called upon state.valid = true. This will post request the server to add the haiku
 
-    //FUNCTION called after the one above, will set state to equal the newly validated function
-
-
     render() {
         return (
             <div>
                 <textarea rows={3} cols={77} value={this.state.text} maxLength={200} onChange={this.handleChange} />
-                {/*<button onClick={this.printHaiku}>Print to Console</button>*/}
                 <br></br> 
                 <button onClick={this.validateHaiku}>Share</button>
             </div>
         );
     }
 }
-
 
 export default UserHaiku;

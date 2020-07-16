@@ -15,6 +15,7 @@ export class Haiku extends Component {
 
     myCallback = (dataFromChild) => {
         this.setState({haiku: dataFromChild});
+        
     }
 
 
