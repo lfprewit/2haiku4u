@@ -1,4 +1,9 @@
 textarea {
     background-color: gainsboro;
-    font-family: "Lucida Console", Courier, monospace;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.title {
+    color: #37FDFE;
+    font-family: 'Press Start 2P', cursive;
 }

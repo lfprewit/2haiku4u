@@ -29,7 +29,7 @@ export class Haiku extends Component {
     render() {
         return (
             <div>
-                <h2>2haiku4u</h2>
+                <h2 className="title">2haiku4u</h2>
                 
                 
                 {this.state.haiku.map((line, i) => (
