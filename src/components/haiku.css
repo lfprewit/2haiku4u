@@ -4,6 +4,8 @@ textarea {
 }
 
 .title {
-    color: #37FDFE;
-    font-family: 'Press Start 2P', cursive;
+    /* color: #37FDFE; */
+    color: #FE0034;
+    /* font-family: 'Press Start 2P', cursive; */
+    font-family: 'Roboto Mono', monospace;
 }

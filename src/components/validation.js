@@ -25,7 +25,7 @@ async function getSyllableCount (arr){
             .catch((e) => console.error(e));
             
         };
-        console.log(`Line ${x + 1} count is: ${lineCount}`); 
+        console.log(`Line ${x + 1} syllable count: ${lineCount}`); 
 
         //line syllable count validation
         switch(x) {
@@ -52,11 +52,9 @@ async function getSyllableCount (arr){
 }
 
 
-
 export async function countOfSyllables  (haiku) {
     let valid = null;
     valid = await getSyllableCount(haiku);
     console.log(`This is a valid haiku: ${valid}`);
     return valid;
 };
-

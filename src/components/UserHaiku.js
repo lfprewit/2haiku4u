@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { countOfSyllables } from './validation'
 import './haiku.css';
+const axios = require('axios');
 
 export class UserHaiku extends Component {
     constructor (props) {
@@ -8,20 +9,10 @@ export class UserHaiku extends Component {
         this.state = { text: "Haiku goes here" }
     };
 
-    //this sets the state equal to the entered text
-    //needs a button that takes the state and splits it by \n and then " ", then calls function
-    //function should changes state value for Validated, and if true should call the function that adds it to the DB
-    
-
-
 
     handleChange = (e) => {
         this.setState({ text: e.target.value });
     };
-
-    // printHaiku = () => {
-    //     console.log(this.state.text);
-    // } 
 
     validateHaiku = () => {
         let haikuCandidate = this.state.text;
@@ -31,19 +22,20 @@ export class UserHaiku extends Component {
             return desired;});
 
         countOfSyllables(haikuForValidation).then( async (results) => {
-            console.log(`This is a valid haiku ${results}`);
             if (results === true) {
                 this.props.callbackFromParent(haikuLines);
                 this.setState({ text: "Haiku goes here" });
+                //post request goes here?
+                axios.post('/api/submit', {haikuLines})
+                .then((response) => {
+                    console.log(response.status);
+                    console.log(response.statusText);
+                }, (error) => {
+                    console.log(error);
+                });
             }
         });
-        
-        
-
-
     }
-
-    //FUNCTION that is called upon state.valid = true. This will post request the server to add the haiku
 
     render() {
         return (
