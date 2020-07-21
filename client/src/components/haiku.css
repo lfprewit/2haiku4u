@@ -1,0 +1,11 @@
+textarea {
+    background-color: gainsboro;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.title {
+    /* color: #37FDFE; */
+    color: #FE0034;
+    /* font-family: 'Press Start 2P', cursive; */
+    font-family: 'Roboto Mono', monospace;
+}
