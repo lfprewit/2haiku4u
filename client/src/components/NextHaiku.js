@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import apiUrl from '../config.js';
 const axios = require('axios');
 
 export class NextHaiku extends Component {
@@ -6,7 +7,7 @@ export class NextHaiku extends Component {
     queryNextHaiku = () => {
         let randomHaiku = [];
 
-        axios.get('/api/random')
+        axios.get(`${apiUrl}/api/random`)
         .then(response => {
             console.log(`Random haiku: ${response.data.rowOne}, ${response.data.rowTwo}, ${response.data.rowThree}`);
             randomHaiku = [response.data.rowOne, response.data.rowTwo, response.data.rowThree];

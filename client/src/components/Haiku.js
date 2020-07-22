@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import './haiku.css';
 import UserHaiku from './UserHaiku';
 import NextHaiku from './NextHaiku';
+import apiUrl from '../config.js';
 const axios = require('axios');
-
 
 export class Haiku extends Component {
     constructor (props) {
@@ -21,7 +21,7 @@ export class Haiku extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/default')
+        axios.get(`${apiUrl}/api/default`)
         .then(response => {this.setState({haiku: response.data})})
         .catch((e) => console.error(e));
     }

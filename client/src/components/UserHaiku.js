@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { countOfSyllables } from './validation'
 import './haiku.css';
+import apiUrl from '../config.js';
 const axios = require('axios');
 
 export class UserHaiku extends Component {
@@ -26,7 +27,7 @@ export class UserHaiku extends Component {
                 this.props.callbackFromParent(haikuLines);
                 this.setState({ text: "Haiku goes here" });
                 //post request goes here?
-                axios.post('/api/submit', {haikuLines})
+                axios.post(`${apiUrl}/api/submit`, {haikuLines})
                 .then((response) => {
                     console.log(response.status);
                     console.log(response.statusText);

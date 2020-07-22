@@ -3,13 +3,36 @@
 const express = require ('express');
 const app = express();
 const port = process.env.PORT || 5000;
+var cors = require('cors');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
+
 var models = require('./index.js');
 var ha = models.haikuModel;
+
+//also put the vercel url
+const whitelist = [
+    'http://localhost',
+    'http://localhost:3000',
+    'https://2haiku4u.vercel.app/'
+  ] ;
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  enablePreflight: true
+}
+app.use(cors(corsOptions))
+app.options('*', cors());
+
 
 
 
