@@ -17,7 +17,7 @@ var ha = models.haikuModel;
 const whitelist = [
     'http://localhost',
     'http://localhost:3000',
-    'https://2haiku4u.vercel.app/'
+    'https://2haiku4u.vercel.app'
   ] ;
 
 const corsOptions = {
