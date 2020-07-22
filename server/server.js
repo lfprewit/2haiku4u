@@ -2,9 +2,9 @@
 
 const express = require ('express');
 const app = express();
-const port = 5000;
-//const port = process.env.PORT || 5000;
-//var cors = require('cors');
+const port = process.env.PORT || 5000;
+var cors = require('cors');
+app.use(cors());//Simple Usage (Enable All CORS Requests)
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -12,9 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false}));
 
 
 var models = require('./index.js');
-var ha = models.haikuModel;
+var ha = models.haikuModel;// is this where to use env variable for db connection?
 
-
+//---------------------------------CORS-STUFF---------------------------
 // const whitelist = [
 //     'http://localhost',
 //     'http://localhost:3000',
@@ -33,8 +33,6 @@ var ha = models.haikuModel;
 // }
 // app.use(cors())
 // app.options('*', cors());
-
-
 
 
 const defaultHaiku = [

@@ -1,7 +1,10 @@
+
+const config = require('./config');//uses config.js which maybe uses env variables
 const { Sequelize, Model, DataTypes } = require('sequelize');
 
-const sequelize = new Sequelize('Haiku', 'postgres', '9999ball', {
-    host: 'localhost',
+
+const sequelize = new Sequelize(config.database, config.username, config.password, {
+    host: config.host,
     dialect: 'postgres',
     define: {
         freezeTableName: true
