@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 var models = require('./index.js');
 var ha = models.haikuModel;
 
-//also put the vercel url
+
 const whitelist = [
     'http://localhost',
     'http://localhost:3000',
