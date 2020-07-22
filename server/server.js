@@ -30,7 +30,7 @@ const corsOptions = {
   },
   enablePreflight: true
 }
-app.use(cors(corsOptions))
+app.use(cors())
 app.options('*', cors());
 
 
