@@ -2,8 +2,9 @@
 
 const express = require ('express');
 const app = express();
-const port = process.env.PORT || 5000;
-var cors = require('cors');
+const port = 5000;
+//const port = process.env.PORT || 5000;
+//var cors = require('cors');
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
@@ -14,24 +15,24 @@ var models = require('./index.js');
 var ha = models.haikuModel;
 
 
-const whitelist = [
-    'http://localhost',
-    'http://localhost:3000',
-    'https://2haiku4u.vercel.app'
-  ] ;
+// const whitelist = [
+//     'http://localhost',
+//     'http://localhost:3000',
+//     'https://2haiku4u.vercel.app'
+//   ] ;
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  },
-  enablePreflight: true
-}
-app.use(cors())
-app.options('*', cors());
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       callback(null, true)
+//     } else {
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   },
+//   enablePreflight: true
+// }
+// app.use(cors())
+// app.options('*', cors());
 
 
 
