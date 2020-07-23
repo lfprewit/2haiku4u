@@ -41,6 +41,63 @@ const defaultHaiku = [
     [`and hope you enjoy!`]
 ];
 
+const haikuArray = [
+    [
+        [`Hello it's Lance here.`],
+        [`I have a Haiku for you`],
+        [`and hope you enjoy!`]
+    ],
+    [
+        [`An old silent pond...`],
+        [`A frog jumps into the pond,`],
+        [`splash! Silence again.`]
+    ],
+    [
+        [`Delightful display`],
+        [`Snowdrops bow their pure white heads`],
+        [`to the sun's glory.`]
+    ],
+    [
+        [`Like crunchy cornflakes`],
+        [`gold leaves rustle underfoot.`],
+        [`Beauty in decay.`]
+    ],
+    [
+        [`The chill, worming in.`],
+        [`Shock, pleasure, bursting within.`],
+        [`Summer tongue awakes`]
+    ],
+    [
+        [`You and me alone`],
+        [`Madness of world locked away`],
+        [`Peace and quiet reigns`]
+    ],
+    [
+        [`Strokes of affection`],
+        [`Light and tenderly expressed`],
+        [`Keep love's bonds so strong`]
+    ],
+    [
+        [`Calm as a river`],
+        [`Tranquility in my heart`],
+        [`Blue summer skies reign`]
+    ],
+    [
+        [`Aloha Lance here.`],
+        [`I have a Haiku for you`],
+        [`I hope you enjoy!`]
+    ],
+    [
+        [`I like haikus, ya`],
+        [`They make me feel like flying`],
+        [`Please save my haiku`]
+    ],
+    [
+        [`When you type the right`],
+        [`amount of syllables here`],
+        [`then it's gonna work.`]
+    ]
+];
 
 //make this the initial haiku displayed
 app.get('/api/default', function(req, res, next) {
@@ -49,15 +106,20 @@ app.get('/api/default', function(req, res, next) {
 
 
 //random get haiku request
-app.get('/api/random', function(req, res, next) {
-        ha.findOne({order: ha.sequelize.random()})
-        .then( (results) => {
-            console.log(`line 33 ${results}`);
-            res.json(results);
-        })
-        .catch((e) => console.error(e));
-});
+// app.get('/api/random', function(req, res, next) {
+//         ha.findOne({order: ha.sequelize.random()})
+//         .then( (results) => {
+//             console.log(`line 33 ${results}`);
+//             res.json(results);
+//         })
+//         .catch((e) => console.error(e));
+// });
 
+app.get('/api/random', function(req, res, next) {
+    let randomHaikuIndex = [Math.floor(Math.random() * 11)];
+    let randomHaiku = haikuArray[randomHaikuIndex];
+    res.send(randomHaiku);
+});
 
 //post haiku to the DB
 app.post('/api/submit', function(req, res, next) {
