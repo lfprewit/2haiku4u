@@ -107,7 +107,7 @@ app.get('/api/default', function(req, res, next) {
 
 //random get haiku request
 app.get('/api/random', function(req, res, next) {
-        ha.findOne({order: ha.sequelize.random()})
+        ha.findOne({attributes: ['rowone', 'rowtwo', 'rowthree'], order: ha.sequelize.random()})
         .then( (results) => {
             console.log(`line 33 ${results}`);
             res.json(results);
