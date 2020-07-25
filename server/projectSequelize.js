@@ -2,6 +2,10 @@
 const config = require('./config');//uses config.js which maybe uses env variables
 const { Sequelize, Model, DataTypes } = require('sequelize');
 
+console.log(config.database);
+console.log(config.username);
+console.log(config.password);
+console.log(config.host);
 
 const sequelize = new Sequelize(config.database, config.username, config.password, {
     host: config.host,
