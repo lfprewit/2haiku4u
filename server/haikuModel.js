@@ -13,6 +13,6 @@ return sequelize.define('haiku', {
         type: DataTypes.STRING,
         allowNull: false
     }
-});
+},{timestamps: false});
 
 };
