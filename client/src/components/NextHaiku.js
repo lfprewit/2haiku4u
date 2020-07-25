@@ -10,8 +10,8 @@ export class NextHaiku extends Component {
         //production version
         axios.get(`${apiUrl}/api/random`)
         .then(response => {
-            console.log(`Random haiku: ${response.data.rowOne}, ${response.data.rowTwo}, ${response.data.rowThree}`);
-            randomHaiku = [response.data.rowOne, response.data.rowTwo, response.data.rowThree];
+            console.log(`Random haiku: ${response.data.rowone}, ${response.data.rowtwo}, ${response.data.rowthree}`);
+            randomHaiku = [response.data.rowone, response.data.rowtwo, response.data.rowthree];
             this.props.callbackFromParent(randomHaiku);
         })
         .catch((e) => console.error(e));
