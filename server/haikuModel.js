@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 
-return sequelize.define('Haiku', {
+return sequelize.define('haiku', {
     rowOne: {
         type: DataTypes.STRING,
         allowNull: false
