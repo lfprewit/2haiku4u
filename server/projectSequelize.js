@@ -7,9 +7,9 @@ console.log(config.username);
 console.log(config.password);
 console.log(config.host);
 
-let sequelize = new Sequelize('haiku', 'efneamdo','d9YqZ-j0v6M_Ia_VlrJo2JggEkI0paj0', {
-    host: 'ruby.db.elephantsql.com',
+let sequelize = new Sequelize('postgres://efneamdo:d9YqZ-j0v6M_Ia_VlrJo2JggEkI0paj0@ruby.db.elephantsql.com:5432/efneamdo', {
     dialect: 'postgres',
+    protocol: 'postgres',
     define: {
         freezeTableName: true
     }
