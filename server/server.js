@@ -128,9 +128,9 @@ app.post('/api/submit', function(req, res, next) {
     let haikuSubmission = req.body.haikuLines;
     try {
         ha.create({
-            rowOne:     haikuSubmission[0],
-            rowTwo:     haikuSubmission[1],
-            rowThree:   haikuSubmission[2]
+            rowone:     haikuSubmission[0],
+            rowtwo:     haikuSubmission[1],
+            rowthree:   haikuSubmission[2]
         });
         res.send('success');
     } catch (error) {
