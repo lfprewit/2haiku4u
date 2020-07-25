@@ -4,6 +4,9 @@ let { Sequelize, Model, DataTypes } = require('sequelize');
 let sequelize = new Sequelize(config.database, config.username, config.password, {
     host: config.host,
     dialect: 'postgres',
+    dialectOptions: {
+        ssl: true,
+    },
     define: {
         freezeTableName: true
     }
