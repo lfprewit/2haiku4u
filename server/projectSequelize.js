@@ -7,14 +7,22 @@ console.log(config.username);
 console.log(config.password);
 console.log(config.host);
 
-let sequelize = new Sequelize(config.database, config.username, config.password, {
-    host: config.host,
+let sequelize = new Sequelize('haiku', 'efneamdo','d9YqZ-j0v6M_Ia_VlrJo2JggEkI0paj0', {
+    host: 'ruby.db.elephantsql.com',
     dialect: 'postgres',
     define: {
         freezeTableName: true
     }
   });
 
+
+//   let sequelize = new Sequelize(config.database, config.username, config.password, {
+//     host: config.host,
+//     dialect: 'postgres',
+//     define: {
+//         freezeTableName: true
+//     }
+//   });
 
 // //CHECK FOR CONNECTION
 // async function testSql () {
