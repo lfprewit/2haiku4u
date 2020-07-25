@@ -3,7 +3,7 @@ let { Sequelize, Model, DataTypes } = require('sequelize');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-let sequelize = new Sequelize( isProduction ? process.env.DATABASE_URL : config.database, config.username, config.password, {
+let sequelize = new Sequelize( process.env.DATABASE_URL, {
     dialect: 'postgres',
     ssl: true,
     dialectOptions: {
